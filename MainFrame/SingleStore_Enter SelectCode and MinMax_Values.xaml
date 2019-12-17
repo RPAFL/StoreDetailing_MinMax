@@ -1,0 +1,537 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Enter_SelectCode_and_Value1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uit="http://schemas.uipath.com/workflow/activities/terminal" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_SelectCode" Type="InArgument(x:String)" />
+    <x:Property Name="in_Value1" Type="InArgument(x:String)" />
+    <x:Property Name="in_TerminalConnection" Type="InArgument(uit:TerminalConnection)" />
+    <x:Property Name="in_MinMaxDT" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="out_BatchNumber" Type="OutArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1783,7259</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Terminal</x:String>
+      <x:String>UiPath.Terminal.Service</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Terminal.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Terminal</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Enter SelectCode and Value1" sap:VirtualizedContainerService.HintSize="1743,7179" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="batchNumber" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uit:TerminalSession ConnectionString="{x:Null}" ContinueOnError="{x:Null}" OutputConnection="{x:Null}" CloseConnection="False" DelayMS="1000" DisplayName="Terminal Session" ExistingConnection="[in_TerminalConnection]" sap:VirtualizedContainerService.HintSize="1721,7055" sap2010:WorkflowViewState.IdRef="TerminalSession_1" TimeoutMS="50000">
+      <uit:TerminalSession.Body>
+        <ActivityAction x:TypeArguments="uit:TerminalConnection">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="uit:TerminalConnection" Name="terminalSession" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1707,6956" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="checkDirectModeText" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uit:TerminalGetTextAtPosition Column="25" DelayMS="300" DisplayName="Get Text at Position - Check &quot;Direct Mode&quot; Text" sap:VirtualizedContainerService.HintSize="1685,87" sap2010:WorkflowViewState.IdRef="TerminalGetTextAtPosition_1" Length="11" Row="1" Text="[checkDirectModeText]" TimeoutMS="5000" WaitType="READY" />
+            <If Condition="[checkDirectModeText.ToLower.Equals(&quot;direct mode&quot;)]" DisplayName="If - Check &quot;Direct Mode&quot; Text Exists" sap:VirtualizedContainerService.HintSize="1685,6705" sap2010:WorkflowViewState.IdRef="If_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence DisplayName="Sequence - Successful" sap:VirtualizedContainerService.HintSize="1460,6558" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:String" Name="checkStoreText" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1438,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Entering Select Code, Value 1 and Value 2&quot;]" />
+                  <uit:TerminalSendKeys DelayMS="300" DisplayName="Send Keys - Enter Select Code" sap:VirtualizedContainerService.HintSize="1438,59" sap2010:WorkflowViewState.IdRef="TerminalSendKeys_1" Keys="[in_SelectCode]" TimeoutMS="5000" WaitType="READY" />
+                  <uit:TerminalSetFieldAtPosition Column="48" DelayMS="300" DisplayName="Set Field at Position - Enter Value1" sap:VirtualizedContainerService.HintSize="1438,87" sap2010:WorkflowViewState.IdRef="TerminalSetFieldAtPosition_1" Row="14" Text="[in_Value1]" TimeoutMS="5000" WaitType="READY" />
+                  <uit:TerminalSetFieldAtPosition Column="62" DelayMS="300" DisplayName="Set Field at Position - Enter Value2" sap:VirtualizedContainerService.HintSize="1438,87" sap2010:WorkflowViewState.IdRef="TerminalSetFieldAtPosition_2" Row="14" Text="[in_MinMaxDT.Rows(0)(&quot;DEPT&quot;).ToString]" TimeoutMS="5000" WaitType="READY" />
+                  <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key - &quot;Enter&quot;" sap:VirtualizedContainerService.HintSize="1438,61" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_1" Key="Transmit" TimeoutMS="5000" WaitType="READY" />
+                  <uit:TerminalGetTextAtPosition Column="3" DelayMS="300" DisplayName="Get Text at Position - Check &quot;Store&quot; Text" sap:VirtualizedContainerService.HintSize="1438,87" sap2010:WorkflowViewState.IdRef="TerminalGetTextAtPosition_2" Length="5" Row="4" Text="[checkStoreText]" TimeoutMS="5000" WaitType="READY" />
+                  <If Condition="[checkStoreText.ToLower.Equals(&quot;store&quot;)]" DisplayName="If - Check &quot;Store&quot; Text Exists" sap:VirtualizedContainerService.HintSize="1438,5722" sap2010:WorkflowViewState.IdRef="If_2">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="Sequence - Store Text Exists" sap:VirtualizedContainerService.HintSize="1213,5575" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:Int32" Name="count" />
+                          <Variable x:TypeArguments="x:Int32" Name="skuRowPosition" />
+                          <Variable x:TypeArguments="x:String" Name="checkCompleteText" />
+                          <Variable x:TypeArguments="x:String" Name="checkInvalidStoreText" />
+                          <Variable x:TypeArguments="x:String" Name="checkPageNumber" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1191,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;BOT entering Store Number&quot;]" />
+                        <uit:TerminalSetFieldAtPosition Column="11" DelayMS="300" DisplayName="Set Field at Position - Enter Store Number" sap:VirtualizedContainerService.HintSize="1191,87" sap2010:WorkflowViewState.IdRef="TerminalSetFieldAtPosition_3" Row="4" Text="[in_MinMaxDT.Rows(0)(&quot;STORE&quot;).ToString]" TimeoutMS="5000" WaitType="READY" />
+                        <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key - &quot;Enter&quot;" sap:VirtualizedContainerService.HintSize="1191,61" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_2" Key="Transmit" TimeoutMS="5000" WaitType="READY" />
+                        <uit:TerminalGetTextAtPosition Column="77" DelayMS="300" DisplayName="Get Text at Position - Check Page Number" sap:VirtualizedContainerService.HintSize="1191,87" sap2010:WorkflowViewState.IdRef="TerminalGetTextAtPosition_9" Length="3" Row="1" Text="[checkPageNumber]" TimeoutMS="5000" WaitType="READY" />
+                        <uit:TerminalGetTextAtPosition Column="1" DelayMS="300" DisplayName="Get Text at Position - Check &quot;Invalid Store&quot; Text" sap:VirtualizedContainerService.HintSize="1191,87" sap2010:WorkflowViewState.IdRef="TerminalGetTextAtPosition_5" Length="13" Row="24" Text="[checkInvalidStoreText]" TimeoutMS="5000" WaitType="READY" />
+                        <If Condition="[checkInvalidStoreText.ToLower.Equals(&quot;invalid store&quot;)]" DisplayName="If - Check Invalid Store Text Exists" sap:VirtualizedContainerService.HintSize="1191,4838" sap2010:WorkflowViewState.IdRef="If_5">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence DisplayName="Sequence - Invalid Store Number" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Error" Message="[&quot;Invalid Store Number&quot;]" />
+                              <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key - &quot;Erase Input&quot;" sap:VirtualizedContainerService.HintSize="314,61" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_8" Key="EraseInput" TimeoutMS="5000" WaitType="READY" />
+                              <uit:TerminalSetFieldAtPosition Column="26" DelayMS="300" DisplayName="Set Field at Position - Enter Select Code" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="TerminalSetFieldAtPosition_15" Row="23" Text="88" TimeoutMS="5000" WaitType="READY" />
+                              <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key - &quot;Enter&quot;" sap:VirtualizedContainerService.HintSize="314,61" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_9" Key="Transmit" TimeoutMS="5000" WaitType="READY" />
+                              <Throw DisplayName="Throw - Invalid Store Number" Exception="[New BusinessRuleException(&quot;Failed$Invalid Store Number&quot;)]" sap:VirtualizedContainerService.HintSize="314,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="Sequence - Correct Store Number" sap:VirtualizedContainerService.HintSize="966,4691" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                              <Sequence.Variables>
+                                <Variable x:TypeArguments="x:String" Name="checkNextPageExists" />
+                                <Variable x:TypeArguments="x:String" Name="checkSKUStatus" />
+                              </Sequence.Variables>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="944,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Entered Store number is valid&quot;]" />
+                              <uit:TerminalGetTextAtPosition Column="73" DelayMS="300" DisplayName="Get Text at Position - Read Batch Number" sap:VirtualizedContainerService.HintSize="944,87" sap2010:WorkflowViewState.IdRef="TerminalGetTextAtPosition_14" Length="7" Row="4" Text="[batchNumber]" TimeoutMS="5000" WaitType="READY" />
+                              <Assign sap:VirtualizedContainerService.HintSize="944,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[count]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Int32">1</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <Assign sap:VirtualizedContainerService.HintSize="944,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[skuRowPosition]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Int32">7</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[in_MinMaxDT]" DisplayName="For Each Row - Entering SKU Details" sap:VirtualizedContainerService.HintSize="944,1958" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                                <ui:ForEachRow.Body>
+                                  <ActivityAction x:TypeArguments="sd:DataRow">
+                                    <ActivityAction.Argument>
+                                      <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                                    </ActivityAction.Argument>
+                                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="819,1811" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Sequence sap:VirtualizedContainerService.HintSize="797,1687" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                        <Sequence.Variables>
+                                          <Variable x:TypeArguments="x:String" Name="checkSizeExists" />
+                                        </Sequence.Variables>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <uit:TerminalSetFieldAtPosition Column="2" DelayMS="300" DisplayName="Set Field at Position - Enter &quot;SKU&quot; Number" sap:VirtualizedContainerService.HintSize="775,87" sap2010:WorkflowViewState.IdRef="TerminalSetFieldAtPosition_4" Row="[skuRowPosition]" Text="[row(&quot;DEPT&quot;).ToString+&quot; &quot;+row(&quot;STOCK&quot;).ToString+&quot; &quot;+row(&quot;CHK&quot;).ToString+&quot; &quot;+row(&quot;WD&quot;).ToString]" TimeoutMS="5000" WaitType="READY">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </uit:TerminalSetFieldAtPosition>
+                                        <uit:TerminalGetTextAtPosition Column="19" DelayMS="300" DisplayName="Get Text at Position - Check &quot;Size&quot;" sap:VirtualizedContainerService.HintSize="775,87" sap2010:WorkflowViewState.IdRef="TerminalGetTextAtPosition_7" Length="3" Row="[skuRowPosition]" Text="[checkSizeExists]" TimeoutMS="5000" WaitType="READY" />
+                                        <If Condition="[checkSizeExists.Equals(&quot;990&quot;)]" DisplayName="If - Check Size Exists" sap:VirtualizedContainerService.HintSize="775,51" sap2010:WorkflowViewState.IdRef="If_7">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <If.Else>
+                                            <uit:TerminalSetFieldAtPosition Column="19" DelayMS="300" DisplayName="Set Field at Position - Enter &quot;SIZE&quot;" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="TerminalSetFieldAtPosition_13" Row="[skuRowPosition]" Text="[row(&quot;SIZE&quot;).ToString]" TimeoutMS="5000" WaitType="READY">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                            </uit:TerminalSetFieldAtPosition>
+                                          </If.Else>
+                                        </If>
+                                        <uit:TerminalSetFieldAtPosition Column="24" DelayMS="300" DisplayName="Set Field at Position - Enter &quot;MIN&quot; Number" sap:VirtualizedContainerService.HintSize="775,87" sap2010:WorkflowViewState.IdRef="TerminalSetFieldAtPosition_8" Row="[skuRowPosition]" Text="[row(&quot;MIN&quot;).ToString]" TimeoutMS="5000" WaitType="READY">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </uit:TerminalSetFieldAtPosition>
+                                        <uit:TerminalSetFieldAtPosition Column="31" DelayMS="300" DisplayName="Set Field at Position - Enter &quot;MAX&quot; Number" sap:VirtualizedContainerService.HintSize="775,87" sap2010:WorkflowViewState.IdRef="TerminalSetFieldAtPosition_9" Row="[skuRowPosition]" Text="[row(&quot;MAX&quot;).ToString]" TimeoutMS="5000" WaitType="READY">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </uit:TerminalSetFieldAtPosition>
+                                        <If Condition="[count &gt; 13]" DisplayName="If - Check page end reached" sap:VirtualizedContainerService.HintSize="775,964" sap2010:WorkflowViewState.IdRef="If_3">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <If.Then>
+                                            <Sequence DisplayName="Sequence - Go to Next Page" sap:VirtualizedContainerService.HintSize="486,817" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="464,91" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Moving to next page to enter more SKU details&quot;]" />
+                                              <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key - &quot;Enter&quot;" sap:VirtualizedContainerService.HintSize="464,61" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_5" Key="Transmit" TimeoutMS="5000" WaitType="READY" />
+                                              <uit:TerminalGetTextAtPosition Column="77" DelayMS="300" DisplayName="Get Text at Position - Check Next Page Exists" sap:VirtualizedContainerService.HintSize="464,87" sap2010:WorkflowViewState.IdRef="TerminalGetTextAtPosition_6" Length="3" Row="1" Text="[checkNextPageExists]" TimeoutMS="5000" WaitType="READY" />
+                                              <uit:TerminalGetTextAtPosition Column="1" DelayMS="300" DisplayName="Get Text at Position - Check SKU Status Exists" sap:VirtualizedContainerService.HintSize="464,87" sap2010:WorkflowViewState.IdRef="TerminalGetTextAtPosition_8" Length="34" Row="24" Text="[checkSKUStatus]" TimeoutMS="5000" WaitType="READY" />
+                                              <If Condition="[NOT checkPageNumber.Equals(checkNextPageExists) AND checkSKUStatus.ToLower.Equals(&quot;all updates successfully completed&quot;)]" DisplayName="If - Check Next Page Opened" sap:VirtualizedContainerService.HintSize="464,207" sap2010:WorkflowViewState.IdRef="If_6">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <If.Then>
+                                                  <Sequence DisplayName="Sequence - updated SKU details successfully" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;SKU details updated successfully&quot;]" />
+                                                    <Assign sap:VirtualizedContainerService.HintSize="314.4,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                                                      <Assign.To>
+                                                        <OutArgument x:TypeArguments="x:Int32">[count]</OutArgument>
+                                                      </Assign.To>
+                                                      <Assign.Value>
+                                                        <InArgument x:TypeArguments="x:Int32">1</InArgument>
+                                                      </Assign.Value>
+                                                    </Assign>
+                                                    <Assign sap:VirtualizedContainerService.HintSize="314.4,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                                      <Assign.To>
+                                                        <OutArgument x:TypeArguments="x:Int32">[skuRowPosition]</OutArgument>
+                                                      </Assign.To>
+                                                      <Assign.Value>
+                                                        <InArgument x:TypeArguments="x:Int32">7</InArgument>
+                                                      </Assign.Value>
+                                                    </Assign>
+                                                  </Sequence>
+                                                </If.Then>
+                                                <If.Else>
+                                                  <Sequence DisplayName="Sequence - Failed to update SKU details" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Error" Message="[&quot;Entered SKU details are incorrect&quot;]" />
+                                                    <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key - &quot;Erase Input&quot;" sap:VirtualizedContainerService.HintSize="314.4,62.4" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_6" Key="EraseInput" TimeoutMS="5000" WaitType="READY" />
+                                                    <uit:TerminalSetFieldAtPosition Column="26" DelayMS="300" DisplayName="Set Field at Position - Enter Select Code" sap:VirtualizedContainerService.HintSize="314.4,88" sap2010:WorkflowViewState.IdRef="TerminalSetFieldAtPosition_14" Row="23" Text="88" TimeoutMS="5000" WaitType="READY" />
+                                                    <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key - &quot;Enter&quot;" sap:VirtualizedContainerService.HintSize="314.4,62.4" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_7" Key="Transmit" TimeoutMS="5000" WaitType="READY" />
+                                                    <Throw DisplayName="Throw - SKU's are incorrect" Exception="[New BusinessRuleException(&quot;Failed$SKU's are incorrect&quot;+&quot;$&quot;+batchNumber.Trim)]" sap:VirtualizedContainerService.HintSize="314.4,22.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                                                  </Sequence>
+                                                </If.Else>
+                                              </If>
+                                            </Sequence>
+                                          </If.Then>
+                                          <If.Else>
+                                            <Sequence DisplayName="Sequence - Enter into Same Page" sap:VirtualizedContainerService.HintSize="264,284" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <Assign sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                                <Assign.To>
+                                                  <OutArgument x:TypeArguments="x:Int32">[count]</OutArgument>
+                                                </Assign.To>
+                                                <Assign.Value>
+                                                  <InArgument x:TypeArguments="x:Int32">[count + 1]</InArgument>
+                                                </Assign.Value>
+                                              </Assign>
+                                              <Assign sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                                <Assign.To>
+                                                  <OutArgument x:TypeArguments="x:Int32">[skuRowPosition]</OutArgument>
+                                                </Assign.To>
+                                                <Assign.Value>
+                                                  <InArgument x:TypeArguments="x:Int32">[skuRowPosition + 1]</InArgument>
+                                                </Assign.Value>
+                                              </Assign>
+                                            </Sequence>
+                                          </If.Else>
+                                        </If>
+                                      </Sequence>
+                                    </Sequence>
+                                  </ActivityAction>
+                                </ui:ForEachRow.Body>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:ForEachRow>
+                              <If Condition="[in_MinMaxDT.Rows.Count mod 14 = 0]" DisplayName="If - Check row count" sap:VirtualizedContainerService.HintSize="944,51" sap2010:WorkflowViewState.IdRef="If_9">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <If.Else>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="336,185" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key - &quot;Enter&quot;" sap:VirtualizedContainerService.HintSize="314,61" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_14" Key="Transmit" TimeoutMS="5000" WaitType="READY" />
+                                  </Sequence>
+                                </If.Else>
+                              </If>
+                              <uit:TerminalGetTextAtPosition Column="77" DelayMS="300" DisplayName="Get Text at Position - Check Next Page Exists" sap:VirtualizedContainerService.HintSize="944,87" sap2010:WorkflowViewState.IdRef="TerminalGetTextAtPosition_10" Length="3" Row="1" Text="[checkNextPageExists]" TimeoutMS="5000" WaitType="READY" />
+                              <uit:TerminalGetTextAtPosition Column="1" DelayMS="300" DisplayName="Get Text at Position - Check SKU Status Exists" sap:VirtualizedContainerService.HintSize="944,87" sap2010:WorkflowViewState.IdRef="TerminalGetTextAtPosition_11" Length="34" Row="24" Text="[checkSKUStatus]" TimeoutMS="5000" WaitType="READY" />
+                              <If Condition="[NOT checkPageNumber.Equals(checkNextPageExists) AND checkSKUStatus.ToLower.Equals(&quot;all updates successfully completed&quot;)]" DisplayName="If - Check SKU's updated successfully" sap:VirtualizedContainerService.HintSize="944,1766" sap2010:WorkflowViewState.IdRef="If_8">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <If.Then>
+                                  <Sequence DisplayName="Sequence - updated SKU details successfully" sap:VirtualizedContainerService.HintSize="719,1619" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="697,91" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;SKU details updated successfully&quot;]" />
+                                    <Assign sap:VirtualizedContainerService.HintSize="697,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[out_BatchNumber]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[batchNumber]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="697,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                                      <ui:CommentOut.Body>
+                                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="336,211" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <uit:TerminalGetTextAtPosition Column="73" DelayMS="300" DisplayName="Get Text at Position - Read Batch Number" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="TerminalGetTextAtPosition_12" Length="7" Row="4" Text="[out_BatchNumber]" TimeoutMS="5000" WaitType="READY" />
+                                        </Sequence>
+                                      </ui:CommentOut.Body>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:CommentOut>
+                                    <uit:TerminalSetFieldAtPosition Column="26" DelayMS="300" DisplayName="Set Field at Position - Enter Selection Code" sap:VirtualizedContainerService.HintSize="697,87" sap2010:WorkflowViewState.IdRef="TerminalSetFieldAtPosition_19" Row="23" Text="97" TimeoutMS="5000" WaitType="READY" />
+                                    <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key - &quot;Enter&quot;" sap:VirtualizedContainerService.HintSize="697,61" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_17" Key="Transmit" TimeoutMS="5000" WaitType="READY" />
+                                    <uit:TerminalGetTextAtPosition Column="68" DelayMS="300" DisplayName="Get Text at Position - Check &quot;Complete&quot; Text" sap:VirtualizedContainerService.HintSize="697,87" sap2010:WorkflowViewState.IdRef="TerminalGetTextAtPosition_13" Length="8" Row="22" Text="[checkCompleteText]" TimeoutMS="5000" WaitType="READY" />
+                                    <If Condition="[checkCompleteText.ToLower.Equals(&quot;complete&quot;)]" DisplayName="If - Check Complete Text exists" sap:VirtualizedContainerService.HintSize="697,818" sap2010:WorkflowViewState.IdRef="If_4">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <If.Then>
+                                        <Sequence DisplayName="Sequence - Entered SKU's are correct" sap:VirtualizedContainerService.HintSize="336,671" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <uit:TerminalSetFieldAtPosition Column="78" DelayMS="300" DisplayName="Set Field at Position - Enter Selection Code" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="TerminalSetFieldAtPosition_11" Row="22" Text="Y" TimeoutMS="5000" WaitType="READY" />
+                                          <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key - &quot;Enter&quot;" sap:VirtualizedContainerService.HintSize="314,61" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_18" Key="Transmit" TimeoutMS="5000" WaitType="READY" />
+                                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;SKU details updated successfully for Store Number - &quot;+in_MinMaxDT.Rows(0)(&quot;STORE&quot;).ToString]" />
+                                          <uit:TerminalSetFieldAtPosition Column="26" DelayMS="300" DisplayName="Set Field at Position - Enter Select Code" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="TerminalSetFieldAtPosition_12" Row="23" Text="88" TimeoutMS="5000" WaitType="READY" />
+                                          <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key - &quot;Enter&quot;" sap:VirtualizedContainerService.HintSize="314,61" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_4" Key="Transmit" TimeoutMS="5000" WaitType="READY" />
+                                        </Sequence>
+                                      </If.Then>
+                                      <If.Else>
+                                        <Sequence DisplayName="Sequence - Entered Invalid SKU's" sap:VirtualizedContainerService.HintSize="336,606" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Error" Message="[&quot;Entered invalid SKU's&quot;]" />
+                                          <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key - &quot;Erase Input&quot;" sap:VirtualizedContainerService.HintSize="314,61" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_10" Key="EraseInput" TimeoutMS="5000" WaitType="READY" />
+                                          <uit:TerminalSetFieldAtPosition Column="26" DelayMS="300" DisplayName="Set Field at Position - Enter Select Code" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="TerminalSetFieldAtPosition_16" Row="23" Text="88" TimeoutMS="5000" WaitType="READY" />
+                                          <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key - &quot;Enter&quot;" sap:VirtualizedContainerService.HintSize="314,61" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_11" Key="Transmit" TimeoutMS="5000" WaitType="READY" />
+                                          <Throw DisplayName="Throw - SKU's are incorrect" Exception="[New BusinessRuleException(&quot;Failed$SKU's are incorrect and because of that BOT got failed to generate Batch Number&quot;)]" sap:VirtualizedContainerService.HintSize="314,22" sap2010:WorkflowViewState.IdRef="Throw_5" />
+                                        </Sequence>
+                                      </If.Else>
+                                    </If>
+                                  </Sequence>
+                                </If.Then>
+                                <If.Else>
+                                  <Sequence DisplayName="Sequence - Failed to update SKU details" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Error" Message="[&quot;Entered SKU details are incorrect&quot;]" />
+                                    <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key - &quot;Erase Input&quot;" sap:VirtualizedContainerService.HintSize="314,61" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_15" Key="EraseInput" TimeoutMS="5000" WaitType="READY" />
+                                    <uit:TerminalSetFieldAtPosition Column="26" DelayMS="300" DisplayName="Set Field at Position - Enter Select Code" sap:VirtualizedContainerService.HintSize="314.4,88" sap2010:WorkflowViewState.IdRef="TerminalSetFieldAtPosition_18" Row="23" Text="88" TimeoutMS="5000" WaitType="READY" />
+                                    <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key - &quot;Enter&quot;" sap:VirtualizedContainerService.HintSize="314.4,62.4" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_16" Key="Transmit" TimeoutMS="5000" WaitType="READY" />
+                                    <Throw DisplayName="Throw - SKU's are incorrect" Exception="[New BusinessRuleException(&quot;Failed$SKU's are incorrect&quot;+&quot;$&quot;+batchNumber.Trim)]" sap:VirtualizedContainerService.HintSize="314,22" sap2010:WorkflowViewState.IdRef="Throw_6" />
+                                  </Sequence>
+                                </If.Else>
+                              </If>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Sequence - Invalid Select codes" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Error" Message="[&quot;Entered invalid Selected Code or Value1 or Value2&quot;]" />
+                        <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key - &quot;Erase Input&quot;" sap:VirtualizedContainerService.HintSize="314,61" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_12" Key="EraseInput" TimeoutMS="5000" WaitType="READY" />
+                        <uit:TerminalSetFieldAtPosition Column="26" DelayMS="300" DisplayName="Set Field at Position - Enter Select Code" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="TerminalSetFieldAtPosition_17" Row="23" Text="88" TimeoutMS="5000" WaitType="READY" />
+                        <uit:TerminalSendControlKey DelayMS="1000" DisplayName="Send Control Key - &quot;Enter&quot;" sap:VirtualizedContainerService.HintSize="314,61" sap2010:WorkflowViewState.IdRef="TerminalSendControlKey_13" Key="Transmit" TimeoutMS="5000" WaitType="READY" />
+                        <Throw DisplayName="Throw - Invalid Selected Code or Value1 or Value2" Exception="[New BusinessRuleException(&quot;Failed$Entered invalid Selected Code or Value1 or Value2&quot;)]" sap:VirtualizedContainerService.HintSize="314,22" sap2010:WorkflowViewState.IdRef="Throw_3" />
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Sequence - Unsuccessful " sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[&quot;Select code screen does not exist&quot;]" />
+                  <Throw DisplayName="Throw - Incorrect Credentials" Exception="[New BusinessRuleException(&quot;Failed$Password was expired or BOT entered incorrect credentials&quot;)]" sap:VirtualizedContainerService.HintSize="314,22" sap2010:WorkflowViewState.IdRef="Throw_4" />
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </uit:TerminalSession.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uit:TerminalSession>
+  </Sequence>
+</Activity>
